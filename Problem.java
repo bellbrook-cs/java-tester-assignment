@@ -5,7 +5,7 @@
  * Purpose: 
  */
 
-public class Problem {
+public class Main {
   public static String Hello() {
     return "World";
   }

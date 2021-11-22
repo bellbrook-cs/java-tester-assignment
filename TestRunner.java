@@ -46,7 +46,7 @@ class TestListener extends RunListener {
   public void testRunFinished(Result result) throws Exception {
       endTime = new Date().getTime();
       System.out.println("Tests Completed!");
-      System.out.printf("Number of test case: %d%n", result.getRunCount());
+      System.out.printf("Number of test cases: %d%n", result.getRunCount());
       if (result.wasSuccessful()) {
         System.out.println("All tests passed! Congrats!");
       } else {

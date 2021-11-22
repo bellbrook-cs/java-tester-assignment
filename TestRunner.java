@@ -34,49 +34,44 @@ public class TestRunner {
 }
 
 class TestListener extends RunListener {
-  //Start and End time of the tests
   long startTime;
   long endTime;
 
   @Override
   public void testRunStarted(Description description) {
-      //Start time of the tests
       startTime = new Date().getTime();
-      //Print the number of tests before the all tests execution.
-      System.out.println("Tests started! Number of Test case: " + description.testCount() + "\n");
+      System.out.println("Starting Tests...\n");
   }
   @Override
   public void testRunFinished(Result result) throws Exception {
-      //End time of the tests
       endTime = new Date().getTime();
-      //Print the below lines when all tests are finished.
-      System.out.println("Tests finished! Number of test case: " + result.getRunCount());
+      System.out.println("Tests Completed!");
+      System.out.printf("Number of test case: %d", result.getRunCount());
+      if (result.wasSuccessful()) {
+        System.out.println("All tests passed! Congrats!")
+      } else {
+        System.out.println("Failed %d/%d tests, see above for more information", getFailureCount(), getRunCount());
+      }
       long elapsedSeconds = (endTime - startTime) / 1000;
-      System.out.println("Elapsed time of tests execution: " + elapsedSeconds + " seconds");
+      System.out.printf("Elapsed time of tests execution: %s seconds%n", elapsedSeconds);
   }
   @Override
   public void testStarted(Description description) {
-      //Write the test name when it is started.
-      System.out.println(description.getMethodName() + " test is starting...");
+      System.out.printf("%s test is starting...%n", description.getMethodName());
   }
   @Override
   public void testFinished(Description description) {
-      //Write the test name when it is finished.
-      System.out.println(description.getMethodName() + " test is finished...\n");
+      System.out.printf("%s test is finished...%n%n", description.getMethodName());
   }
   @Override
   public void testFailure(Failure failure) {
-      //Write the test name when it is failed.
-      System.out.println(failure.getDescription().getMethodName() + " test FAILED!");
+      System.out.printf("%s test FAILED!%n", failure.getDescription().getMethodName());
       System.out.println(failure.getMessage());
   }
   @Override
   public void testIgnored(Description description) throws Exception {
       super.testIgnored(description);
       Ignore ignore = description.getAnnotation(Ignore.class);
-      String ignoreMessage = String.format(
-          "@Ignore test method '%s()': '%s'",
-          description.getMethodName(), ignore.value());
-      System.out.println(ignoreMessage + "\n");
+      System.out.printf("@Ignore test method '%s()': '%s'%n", description.getMethodName(), ignore.value());
   }
 }

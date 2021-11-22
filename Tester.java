@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 public class Tester {
     public static void main(String[] args) {
 
-      System.out.println("\nStart running tests...\n");
+      System.out.println("\nTesting Code...\n");
       
       Result result = JUnitCore.runClasses(Tester.class);
       

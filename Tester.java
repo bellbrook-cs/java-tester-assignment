@@ -36,11 +36,11 @@ public class Tester {
 
     @Test
     public void testHello() {
-      assertEquals("Hello", Problem.Hello());
+      assertEquals("Hello", Main.Hello());
     }
 
     @Test
     public void testWorld() {
-      assertEquals("World", Problem.Hello());
+      assertEquals("World", Main.Hello());
     }
 }

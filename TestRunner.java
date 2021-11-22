@@ -48,9 +48,9 @@ class TestListener extends RunListener {
       System.out.println("Tests Completed!");
       System.out.printf("Number of test case: %d", result.getRunCount());
       if (result.wasSuccessful()) {
-        System.out.println("All tests passed! Congrats!")
+        System.out.println("All tests passed! Congrats!");
       } else {
-        System.out.println("Failed %d/%d tests, see above for more information", getFailureCount(), getRunCount());
+        System.out.printf("Failed %d/%d tests, see above for more information%n", result.getFailureCount(), result.getRunCount());
       }
       long elapsedSeconds = (endTime - startTime) / 1000;
       System.out.printf("Elapsed time of tests execution: %s seconds%n", elapsedSeconds);

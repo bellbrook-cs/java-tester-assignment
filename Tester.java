@@ -11,12 +11,12 @@ import org.junit.runner.notification.Failure;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
-public class Main {
+public class Tester {
     public static void main(String[] args) {
 
       System.out.println("\nStart running tests...\n");
       
-      Result result = JUnitCore.runClasses(Main.class);
+      Result result = JUnitCore.runClasses(Tester.class);
       
       for (Failure failure : result.getFailures()) {
 
